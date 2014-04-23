@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 <meta charset="utf-8">
-<link href="../lib/css/nv.d3.css" rel="stylesheet" type="text/css">
+<link href="./lib/css/nv.d3.css" rel="stylesheet" type="text/css">
 <style>
 
 body {
@@ -25,13 +25,11 @@ text {
 <h2>Test2</h2>
 <svg id="test2" class="mypiechart"></svg>
 
-<script src="../lib/js/d3.v3.js"></script>
-<script src="../lib/js/nv.d3.js"></script>
-<script src="../lib/js/legend.js"></script>
-<script src="../lib/js/pie.js"></script>
-<script src="../lib/js/pieChart.js"></script>
-<script src="../lib/js/utils.js"></script>
-<script src="/Data/Data_2012.json"></script>
+<script src="http://d3js.org/d3.v2.min.js"></script>
+<script src="./lib/js/legend.js"></script>
+<script src="./lib/js/pie.js"></script>
+<script src="./lib/js/pieChart.js"></script>
+<script src="./lib/js/utils.js"></script>
 <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 
 <script>
@@ -71,8 +69,12 @@ text {
   var data2012;
 
 function getData() {
-    data2012 = $.getJSON('./Data_2012.json');
-    data2012 = JSON.stringify(data2012);
+    d3.json("data.json", function(data1) {
+      data2012 = data1;
+      alert(data1.length)
+    });
+
+    strdata2012 = JSON.stringify(data2012);
    
 
     var list = "";
@@ -80,7 +82,7 @@ function getData() {
         list += data[i].Code + " " + data[i]["School Name"] + "<br />";
     }
 
-    document.getElementById("placeholder").innerHTML = list;
+    document.getElementById("placeholder").innerHTML = strdata2012;
 
 
 
@@ -130,7 +132,7 @@ function getData() {
     item["number"] = sumSO;
     schoolData.push(item);
 
-    document.getElementById("placeholder").innerHTML = schoolData[0].number;
+   // document.getElementById("placeholder").innerHTML = schoolData[0].number;
     
 //	document.getElementById("placeholder").innerHTML=data.users[0].firstName + " " + data.users[0].lastName+"--"+ data.users[0].joined.month;
 //	var list = "";
@@ -145,12 +147,12 @@ function getData() {
 nv.addGraph(function() {
     var width = 500,
         height = 500;
-	getData();
 	
+    getData();
 	
     var chart = nv.models.pieChart()
         .x(function(d) { return data2012["Level"] })
-        .y(function (d) { return data2012["F&R"] })
+        .y(function(d) { return data2012["F&R"] })
         .color(d3.scale.category10().range())
         .width(width)
         .height(height);
@@ -191,7 +193,7 @@ nv.addGraph(function() {
       d3.select("#test2")
           //.datum(historicalBarChart)
           .datum(testdata)
-        .transition().duration(1200)
+          .transition().duration(1200)
           .attr('width', width)
           .attr('height', height)
           .call(chart);

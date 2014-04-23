@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<link href="../spring14-rprviz2/lib/css/nv.d3.css" rel="stylesheet" type="text/css">
+
+<style>
+
+body {
+  overflow-y:scroll;
+}
+
+text {
+  font: 12px sans-serif;
+}
+
+svg {
+  display: block;
+}
+
+#chart1 svg{
+  height: 500px;
+  min-width: 100px;
+  min-height: 100px;
+/*
+  margin: 10px;
+  Minimum height and width is a good idea to prevent negative SVG dimensions...
+  For example width should be =< margin.left + margin.right + 1,
+  of course 1 pixel for the entire chart would not be very useful, BUT should not have errors
+*/
+}
+
+</style>
+<body>
+
+  <div id="chart1">
+    <svg></svg>
+  </div>
+  
+  <div id="placeholder">
+  </div>
+
+<script src="../spring14-rprviz2/lib/js/d3.v3.js"></script>
+<script src="../spring14-rprviz2/lib/js/nv.d3.js"></script>
+<!-- including all the components so I don't have to minify every time I test in development -->
+<script src="../spring14-rprviz2/lib/js/tooltip.js"></script>
+<script src="../spring14-rprviz2/lib/js/utils.js"></script>
+<script src="../spring14-rprviz2/lib/js/axis.js"></script>
+<script src="../spring14-rprviz2/lib/js/discreteBar.js"></script>
+<script src="../spring14-rprviz2/lib/js/discreteBarChart.js"></script>
+<script>
+
+
+
+function getData() {
+	d3.json("./data.json", function(curData) {
+  
+	// E == Elementary, M == Middle School, S == High School, S/O == mixed grade level school
+    sumE = 0;
+    sumM = 0;
+    sumS = 0;
+    sumSO = 0;
+
+    // loop to get all of the numbers associated with that school type
+    for (var i = 0; i < curData.length; i++) {
+        if (curData[i][" Level"] === "E") {
+            sumE++;
+        } else if (curData[i][" Level"] === "M") {
+            sumM++;
+        } else if (curData[i][" Level"] === "S") {
+            sumS++;
+        } else if (curData[i][" Level"] === "S/O") {
+            sumSO++;
+        }
+    }
+
+    // setting the items in JSON to use within the graph
+    // schoolData is the JSON object for this page
+    var schoolData = [];
+    // this collects the elementary school data so it will looks nice to the user
+    item = {};
+    item["title"] = "Elementary School";
+    item["number"] = sumE;
+    schoolData.push(item);
+
+    // this collects the middle school data so it will looks nice to the user
+    item = {};
+    item["title"] = "Middle School";
+    item["number"] = sumM;
+    schoolData.push(item);
+
+    // this collects the high school data so it will looks nice to the user
+    item = {};
+    item["title"] = "High School";
+    item["number"] = sumS;
+    schoolData.push(item);
+
+    // this collects the combined school data so it will looks nice to the user
+    item = {};
+    item["title"] = "Combined Schooling";
+    item["number"] = sumSO;
+    schoolData.push(item);
+    console.log(schoolData);
+
+
+nv.addGraph(function() { 
+  var chart = nv.models.discreteBarChart()
+      .x(function(d) { return schoolData.title })
+      .y(function(d) { return schoolData.number })
+      .staggerLabels(true)
+      //.staggerLabels(schoolData[0].title.length > 8)
+      //.tooltips(false)
+      .showValues(true)
+      .transitionDuration(250)
+      ;
+
+  d3.select('#chart1 svg')
+      .datum(schoolData)
+      .call(chart);
+
+  nv.utils.windowResize(chart.update);
+
+  return chart;
+});	
+
+
+	});
+
+}
+	 
+	 
+	 getData();
+    
+
+
+</script>
