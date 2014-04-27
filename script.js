@@ -1,17 +1,14 @@
 $(document).ready(function() {
 
 	$('.data').hide();
-	$('.description').show();
 	$('.home').show();
 
 	$('#nav_home').click(function() {
 		$('.data').hide(500);
-		$('.description').show(500);
 		$('.home').show(500);
 	});
 
 	$('#nav_data').click(function() {
-		$('.description').hide(500);
 		$('.home').hide(500);
 		$('.data').show(500);
 	});
