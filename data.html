@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Data Visualization of Lunch Data</title>
+		<link href="./style.css" rel="stylesheet" type="text/css">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script type='text/javascript' src='./script.js'></script>
+		<script type='text/javascript' src="./data_2012.js"></script>
+  		<script type='text/javascript' src="./data_2011.js"></script>
+  		<script type='text/javascript' src="./data_2010.js"></script>
+ 		<script type='text/javascript' src="./data_2009.js"></script>
+ 		<script type='text/javascript' src="./data_2008.js"></script>
+	</head>
+	<body>
+		<section>
+		<h1>Raleigh Public Record: Data Visualization</h1>
+		<nav>
+			<div id="nav_home">Home</div>
+			<div id="nav_data">Data</div>
+		</nav>
+		</section>
+
+		<section class="home">
+			<div>
+				<p>
+					home page paragraph test
+				</p>
+			</div>
+		</section>
+
+		<section class="data">
+			<nav>
+			<div id="data1">Free and Reduced Lunch Rate vs. ESL Rate</div>
+			<div id="data2">Free and Reduced Lunch Rate vs. LEP Rate</div>
+			<div id="data3">Free and Reduced Lunch Rate vs. NC ABC Results</div>
+			</nav>
+			<div id="content1" class="hidden">
+				<h2>
+					Free and Reduce Lunch vs. ESL Rate
+				</h2>
+				<p>
+					<div>
+						<input type="button" value="2008" onclick="showIframe('FRvsESL2008')">
+						<input type="button" value="2009" onclick="showIframe('FRvsESL2009')">
+						<input type="button" value="2010" onclick="showIframe('FRvsESL2010')">
+						<input type="button" value="2011" onclick="showIframe('FRvsESL2011')">
+						<input type="button" value="2012" onclick="showIframe('FRvsESL2012')">
+					</div>
+
+					<div>
+						<iframe id='FRvsESL2008' height=600 width=600 src="./FRvsESL2008.html" frameBorder="0" style="display:none"></iframe>
+						<iframe id='FRvsESL2009' height=600 width=600 src="./FRvsESL2009.html" frameBorder="0" style="display:none"></iframe>
+						<iframe id='FRvsESL2010' height=600 width=600 src="./FRvsESL2010.html" frameBorder="0" style="display:none"></iframe>
+						<iframe id='FRvsESL2011' height=600 width=600 src="./FRvsESL2011.html" frameBorder="0" style="display:none"></iframe>
+						<iframe id='FRvsESL2012' height=600 width=600 src="./FRvsESL2012.html" frameBorder="0" style="display:none"></iframe>
+					</div>
+				</p>
+			</div>
+			<div id="content2" class="hidden">
+				<h2>
+					Free and Reduced Lunch Rate vs. LEP Rate
+				</h2>
+				<p>
+					<div>
+						<input type="button" value="2008" onclick="showIframe('FRvsLEP2008')">
+						<input type="button" value="2009" onclick="showIframe('FRvsLEP2009')">
+						<input type="button" value="2010" onclick="showIframe('FRvsLEP2010')">
+						<input type="button" value="2011" onclick="showIframe('FRvsLEP2011')">
+						<input type="button" value="2012" onclick="showIframe('FRvsLEP2012')">
+					</div>
+					
+					<div>
+						<iframe id='FRvsLEP2008' height=600 width=600 src="./FRvsLEP2008.html" frameBorder="0" style="display:none"></iframe>
+						<iframe id='FRvsLEP2009' height=600 width=600 src="./FRvsLEP2009.html" frameBorder="0" style="display:none"></iframe>
+						<iframe id='FRvsLEP2010' height=600 width=600 src="./FRvsLEP2010.html" frameBorder="0" style="display:none"></iframe>
+						<iframe id='FRvsLEP2011' height=600 width=600 src="./FRvsLEP2011.html" frameBorder="0" style="display:none"></iframe>
+						<iframe id='FRvsLEP2012' height=600 width=600 src="./FRvsLEP2012.html" frameBorder="0" style="display:none"></iframe>
+					</div>
+				</p>
+			</div>
+			<div id="content3" class="hidden">
+				<h2>
+					Free and Reduced Lunch Rate vs. NC ABC Results
+				</h2>
+				<p>
+					<div id="buttons3">
+						<input type="button" value="2008" onclick="showIframe('FRvsTEST2008')">
+						<input type="button" value="2009" onclick="showIframe('FRvsTEST2009')">
+						<input type="button" value="2010" onclick="showIframe('FRvsTEST2010')">
+						<input type="button" value="2011" onclick="showIframe('FRvsTEST2011')">
+						<input type="button" value="2012" onclick="showIframe('FRvsTEST2012')">
+					</div>
+					<div id="iframes3">
+						<iframe id='FRvsTEST2008' height=600 width=600 src="./FRvsTEST2008.html" frameBorder="0" style="display:none"></iframe>
+						<iframe id='FRvsTEST2009' height=600 width=600 src="./FRvsTEST2009.html" frameBorder="0" style="display:none"></iframe>
+						<iframe id='FRvsTEST2010' height=600 width=600 src="./FRvsTEST2010.html" frameBorder="0" style="display:none"></iframe>
+						<iframe id='FRvsTEST2011' height=600 width=600 src="./FRvsTEST2011.html" frameBorder="0" style="display:none"></iframe>
+						<iframe id='FRvsTEST2012' height=600 width=600 src="./FRvsTEST2012.html" frameBorder="0" style="display:none"></iframe>
+					</div>
+				</p>
+			</div>
+			<div id="content4" class="hidden">
+				Insert D3 graph data here!
+			</div>
+		</section>
+
+		<section class="description">
+			<div>
+				<p>The Raleigh Public Record data visualization tool!</p>
+			</div>
+		</section>
+
+		<section class="footer">
+		<div>
+		Developed for <a href="http://www.raleighpublicrecord.org">Raleigh Public Record</a> by Computer Science students at <a href="http://www.ncsu.edu">North Carolina State University</a>
+		</div>
+		</section>
+	</body>
+</html>
