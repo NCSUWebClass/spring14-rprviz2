@@ -90,7 +90,7 @@ function showFRvsESL(data, year) {
         .attr("text-anchor", "end")
 		.attr("dx", "1em")
         .attr("x", width / 2)
-        .attr("y", height - 35)
+        .attr("y", height - 30)
         .text("Percent Free and Reduced Lunches");
 		
 	svg.append("text")
@@ -178,7 +178,7 @@ function showFRvsLEP(data, year) {
         .attr("text-anchor", "end")
 		.attr("dx", "1em")
         .attr("x", width / 2)
-        .attr("y", height - 35)
+        .attr("y", height - 30)
         .text("Percent Free and Reduced Lunches");
 		
 	svg.append("text")
@@ -266,7 +266,7 @@ function showFRvsTEST(data, year) {
         .attr("text-anchor", "end")
 		.attr("dx", "1em")
         .attr("x", width / 2)
-        .attr("y", height - 35)
+        .attr("y", height - 30)
         .text("Percent Free and Reduced Lunches");
 		
 	svg.append("text")
